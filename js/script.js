@@ -9,7 +9,7 @@ $(document).ready(function() {
 	// 1.
 	// When the page is loaded,
 	// call the loadData() function.
-
+	loadData();
 });
 
 function loadData() {
@@ -17,6 +17,9 @@ function loadData() {
 	// 2.
 	// Write an AJAX call here to load your data.
 	// Then PASS the data to writeTable();
+	$.getJSON("js/donations_over_5K.json", function(data) {
+		writeTable(data);
+    });
 }
 
 
@@ -29,5 +32,19 @@ function writeTable(data) {
 	// - Contribution Date
 	// - Contributon Information
 	// - Amount
+	for (i=0; i<data.length; i++) {
+		var ComNm = data[i]["Committee"];
+		var ConDate = data[i]["Contribution Date"];
+		var ConInf = data[i]["Contribution Information"];
+		var Amount = data[i]["Amount"];
+
+		if (ComNm == "CITIZENS TO ELECT KURT SCHAEFER ATTORNEY GENERAL"){
+			$(".table").append(
+				"<tr>"+"<td class = 'Date'>"+ConDate+"</td>"+"<td class = 'Info'>"+ConInf+"</td>"+"<td class = 'Amt'>"+Amount+"</td>"+"</tr>"
+
+				);
+
+				}
+		}
 }
 

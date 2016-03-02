@@ -7,3 +7,12 @@ in your index.html and script.js files. */
 .chart {
   height: 500px;
 }
+
+.AmtHead {
+
+    text-align: right;
+}
+
+.Amt{
+    text-align: right;
+}
